@@ -1,5 +1,6 @@
 {
-  "server": {
+  "port": 8000,
+    "server": {
     "baseDir": "src",
     "routes": {
       "/node_modules": "node_modules"
