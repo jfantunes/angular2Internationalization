@@ -2,6 +2,11 @@
 
 https://github.com/ngx-translate/core
 
+#Useful links
+
+https://github.com/ngx-translate/core/issues/411
+https://plnkr.co/edit/01UjWY3TKfP6pgwXKuEa?p=preview
+
 
 #Userful extensions for VsCode
 
