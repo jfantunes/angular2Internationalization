@@ -2,9 +2,16 @@
 
 
 {{ 'HOME.SELECT' | translate }}
+
+
 <select #langSelect (change)="translate.use(langSelect.value)">
     <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
 </select>
+
+<ul>
+<li><a routerLink="/text1">{{ 'HOME.TEXT1' | translate }}</a></li>
+<li><a routerLink="/text2">{{ 'HOME.TEXT2' | translate }}</a></li>
+</ul>
 
 
 <router-outlet></router-outlet>
