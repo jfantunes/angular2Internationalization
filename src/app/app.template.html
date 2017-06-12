@@ -1,2 +1,10 @@
-<h1>Hello</h1>
+<h1 translate>HOME.TITLE</h1>
+
+
+{{ 'HOME.SELECT' | translate }}
+<select #langSelect (change)="translate.use(langSelect.value)">
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+</select>
+
+
 <router-outlet></router-outlet>
