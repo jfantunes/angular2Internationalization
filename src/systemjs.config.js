@@ -25,6 +25,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs':'npm:rxjs',
+      'plugin-json': 'systemjs-plugin-json/json.js',
       '@ngx-translate/core': 'npm:@ngx-translate/core/bundles/core.umd.js',
       '@ngx-translate/http-loader': 'npm:@ngx-translate/http-loader/bundles/http-loader.umd.js'
       
@@ -37,8 +38,9 @@
         meta: {
           './*.js': {
             loader: 'systemjs-angular-loader.js'
-          }
-        }
+          },
+           '*.json': { loader: 'plugin-json' } },
+        
       },
       rxjs: {
         defaultExtension: 'js'

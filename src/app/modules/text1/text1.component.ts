@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var __moduleName: any;
-
 @Component({
   selector: 'text1',
   templateUrl: './text1.component.html',

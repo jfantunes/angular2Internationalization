@@ -28,12 +28,13 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "canonical-path": "0.0.2",
     "concurrently": "^3.2.0",
     "lite-server": "^2.2.2",
-    "typescript": "~2.1.0",
-    "canonical-path": "0.0.2",
+    "lodash": "^4.16.4",
+    "systemjs-plugin-json": "^0.3.0",
     "tslint": "^3.15.1",
-    "lodash": "^4.16.4"
+    "typescript": "~2.1.0"
   },
   "repository": {}
 }
