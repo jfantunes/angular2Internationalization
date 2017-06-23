@@ -3,7 +3,6 @@ import { Text2RoutingModule } from './text2.routes';
 import { Text2Component } from './text2.component';
 import { NgModule } from '@angular/core';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {Http} from '@angular/http';
 
 import {locale as english} from './i18n/en';
 import {locale as french} from './i18n/fr';
