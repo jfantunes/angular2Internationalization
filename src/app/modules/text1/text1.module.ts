@@ -1,65 +1,32 @@
-import { Translation } from './../translation/translation.module';
-import { NanoTranslationService } from './../translation/translation.service';
+import { TranslationLoaderService } from './../translation/translation.service';
 import { Text1RoutingModule } from './text1.routes';
 import { Text1Component } from './text1.component';
 import { NgModule } from '@angular/core';
-import {HttpModule, Http} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import {HttpModule} from '@angular/http';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
+import {locale as english} from './i18n/en';
+import {locale as french} from './i18n/fr';
+import {locale as portuguese} from './i18n/pt';
 
-import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     HttpModule,
-    Translation,
-    Text1RoutingModule],
+    Text1RoutingModule,
+    TranslateModule],
     declarations: [
       Text1Component
     ],
-    providers:[TranslateService]
+    providers:[ TranslationLoaderService ]
 })
 
 
-
-
 export class Text1Module {
-    
-   constructor(translate: TranslateService) {
-      // let currentLanguage = translate.defaultLang;
-      // this.t=translate;
-      // translateService.getTranslationForModule(translate, currentLanguage, 'app/modules/text1/i18n');
-
-       translate.onLangChange.subscribe((event: LangChangeEvent) => {
-          console.log("mudei");
-           
-        });
-   }
-
+   constructor(private translate: TranslateService, private translationLoader: TranslationLoaderService) {
+      this.translate.addLangs(['en', 'pt', 'fr']);
+      this.translationLoader.setFeatureModuleTranslation(english, french, portuguese);
+  }
 }
-
-
-
-
-// export class Text1Module {
-
-//    private translate: TranslateService;
-
-//    constructor(translate: TranslateService, private http: Http) {
-//       this.translate = translate;
-//       this.getJSON('en');
-//       translate.onLangChange.subscribe((event: LangChangeEvent) => {
-//         this.getJSON(event.lang);
-//       });
-//    }
-
-//   getJSON(lang: string): void {
-//          this.http.get('app/modules/text1/i18n/en.json')
-//              .map((translation) => translation.json())
-//              .subscribe(
-//                 data => this.translate.setTranslation(lang, data, true)
-//               );
-//      }
-// }
 
 

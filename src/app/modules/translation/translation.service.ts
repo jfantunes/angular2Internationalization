@@ -1,36 +1,36 @@
-import { Http } from '@angular/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 
 
  @Injectable()
- export class NanoTranslationService  {
-    http: Http;
-    private translateService: TranslateService;
-    private currentLanguage: string;
+ export class TranslationLoaderService  {
+    private currentLanguange: string;
 
-    constructor(http: Http, translateService: TranslateService){
-        this.translateService = translateService;
-        this.http = http;
+    constructor(private translateService: TranslateService) {
+        this.currentLanguange = translateService.currentLang;
     }
 
+   
 
-    public createTranslationServiceForModule(): TranslateService{
-        const newTranslateService = Object.assign({}, this.translateService);
-        return newTranslateService;
+    public setMainModuleTranslation(lang?: string, ...translations: any[]): void {
+        const locales = [...translations];
+        locales.forEach( (locale) => {
+           this.translateService.setTranslation(locale.Lang, locale.Data, true);
+        });
+        if (lang != null) {
+            this.translateService.use(lang);
+            this.currentLanguange = lang;
+        }
     }
 
-    public getTranslationForModule(translate: TranslateService, lang: string, path: string): void {
-         this.getLanguage(translate, path, lang);
+    public setFeatureModuleTranslation(...translations: any[]): void {
+        const locales = [...translations];
+        locales.forEach( (locale) => {
+            console.log(locale.Data);
+           this.translateService.setTranslation(locale.Lang, locale.Data, true);
+        });
+        console.log(this.currentLanguange);
+        this.translateService.use(this.currentLanguange);   
     }
-
-    private getLanguage(translate: TranslateService, lang: string, path: string): void {
-         console.log("mudou");
-         this.http.get(lang + '/' + path + '.json')
-             .map((translation) => translation.json())
-             .subscribe(
-                data => translate.setTranslation(lang, data, true)
-              );
-     }
 
  }
